@@ -72,8 +72,9 @@ app.get('/blogs/:id', (req, res) => {
     })
     .catch(err => {
       console.log(err);
+      res.status(404).render('404', { title: '404' });
     });
-});
+  });
 
 app.delete('/blogs/:id', (req, res) => {
   const id = req.params.id;
