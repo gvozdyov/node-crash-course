@@ -7,7 +7,9 @@ const Blog = require('./models/blog');
 const app = express();
 
 // connect to mongodb & listen for requests
-const dbURI = "mongodb+srv://netninja:test1234@net-ninja-tuts-del96.mongodb.net/node-tuts";
+// const dbURI = "mongodb+srv://netninja:test1234@net-ninja-tuts-del96.mongodb.net/node-tuts";
+const dbURI = "mongodb+srv://user:user1234@notuts.yrk8r.mongodb.net/note-tuts?retryWrites=true&w=majority";
+
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(result => app.listen(3000))
@@ -67,6 +69,7 @@ app.get('/blogs/:id', (req, res) => {
   Blog.findById(id)
     .then(result => {
       res.render('details', { blog: result, title: 'Blog Details' });
+      console.log(result);
     })
     .catch(err => {
       console.log(err);
